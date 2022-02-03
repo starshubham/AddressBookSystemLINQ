@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 
 namespace AddressBookSystemLINQ
 {
-    internal class AddressBookTable
+    class AddressBookTable
     {
+        // UC 1 Create a new DataTable
+        DataTable table = new DataTable("AddressBookSystem"); 
     }
 }
