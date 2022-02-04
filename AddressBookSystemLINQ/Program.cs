@@ -33,7 +33,9 @@ namespace AddressBookSystemLINQ
             // addressBookTable.GetAllContacts();
 
             // UC10
-            addressBookTable.GetCountByAddressBookType();
+            // addressBookTable.GetCountByAddressBookType();
+
+            addressBookTable.RetrieveByUsingBookType("Friend");
 
         }
     }
