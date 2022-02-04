@@ -22,7 +22,7 @@ namespace AddressBookSystemLINQ
             table.Columns.Add("Zip", typeof(string));
             table.Columns.Add("PhoneNumber", typeof(string));
             table.Columns.Add("Email", typeof(string));
-            table.Columns.Add("BookName", typeof(string));     // UC9:- Ability to identify each Address Book with name and Type.
+            table.Columns.Add("BookName", typeof(string));     //  UC9:- Ability to identify each Address Book with name and Type.
             table.Columns.Add("BookType", typeof(string));
 
             // UC3:- Ability to insert new Contacts to Address Book
@@ -142,6 +142,19 @@ namespace AddressBookSystemLINQ
             }
         }
 
-
+        /* UC10:- Ability to get number of contact persons i.e. count by type */
+        public void GetCountByAddressBookType()
+        {
+            var countData = table.AsEnumerable().GroupBy(BookType => BookType.Field<string>("BookType")).
+                Select(BookType => new
+                {
+                    BookType = BookType.Key,
+                    BookTypeCount = BookType.Count()
+                });
+            foreach (var contactlist in countData)
+            {
+                Console.WriteLine("AddressBook Type =" + contactlist.BookType + " --> " + "AddressBook_Count = " + contactlist.BookTypeCount);
+            }
+        }
     }
 }
