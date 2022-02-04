@@ -26,7 +26,7 @@ namespace AddressBookSystemLINQ
             // UC3:- Ability to insert new Contacts to Address Book
             table.Rows.Add("Shubham", "Seth", "Kopa, Patrahi", "Jaunpur", "Uttar Pradesh", "222129", "8788566219", "shubham@gmail.com");
             table.Rows.Add("Ekta", "Verma", "Durga kund", "Varanasi", "Uttar Pradesh", "225121", "8570934858", "ekta@gmail.com");
-            table.Rows.Add("Vishal", "Singh", "Machhali Shahar", "Jaunpur", "Uttar Pradesh", "242206", "7894561230", "vishal@gmail.com.a");
+            table.Rows.Add("Vishal", "Singh", "Machhali Shahar", "Jaunpur", "Uttar Pradesh", "242206", "7894561230", "vishal@gmail.com");
         }
 
         public void GetAllContacts()
@@ -78,6 +78,30 @@ namespace AddressBookSystemLINQ
                 Console.WriteLine(ex.Message);
             }
         }
+
+        /*UC6:- Ability to Retrieve Person belonging to a City or State from the Address Book*/
+
+        public void RetrieveByCityOrState(string city, string state)
+        {
+            var retrieveData = from records in table.AsEnumerable()
+                               where records.Field<string>("City") == city || records.Field<string>("State") == state
+                               select records;
+            //Printing data
+            Console.WriteLine("\nRetrieve contact details by city or state name");
+            foreach (DataRow dr in table.AsEnumerable())
+            {
+                Console.WriteLine("\n");
+                Console.WriteLine("FirstName:- " + dr.Field<string>("firstName"));
+                Console.WriteLine("LastName:- " + dr.Field<string>("lastName"));
+                Console.WriteLine("Address:- " + dr.Field<string>("address"));
+                Console.WriteLine("City:- " + dr.Field<string>("city"));
+                Console.WriteLine("State:- " + dr.Field<string>("state"));
+                Console.WriteLine("Zip:- " + dr.Field<string>("zip"));
+                Console.WriteLine("PhoneNumber:- " + dr.Field<string>("phoneNumber"));
+                Console.WriteLine("Email:- " + dr.Field<string>("eMail"));
+            }
+        }
+
 
     }
 }
