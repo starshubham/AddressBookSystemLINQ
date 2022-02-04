@@ -102,6 +102,18 @@ namespace AddressBookSystemLINQ
             }
         }
 
+        /* UC7:- Ability to understand the size of address book by City and State 
+                 - Here size indicates the count
+        */
+        public void CountByCityOrState(string city, string state)
+        {
+            var contact = from c in table.AsEnumerable()
+                          where c.Field<string>("City") == city && c.Field<string>("State") == state
+                          select c;
+
+            Console.WriteLine("Count of contacts in {0}, {1} is {2}", city, state, contact.Count());
+        }
+
 
     }
 }
