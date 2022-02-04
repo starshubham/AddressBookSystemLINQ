@@ -30,7 +30,10 @@ namespace AddressBookSystemLINQ
             // addressBookTable.SortedContactsByNameForAgivenCity("Jaunpur");
 
             // UC9
-            addressBookTable.GetAllContacts();
+            // addressBookTable.GetAllContacts();
+
+            // UC10
+            addressBookTable.GetCountByAddressBookType();
 
         }
     }
