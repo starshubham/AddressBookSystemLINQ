@@ -26,7 +26,7 @@ namespace AddressBookSystemLINQ
             table.Columns.Add("BookType", typeof(string));
 
             // UC3:- Ability to insert new Contacts to Address Book
-            table.Rows.Add("Shubham", "Seth", "Kopa, Patrahi", "Jaunpur", "Uttar Pradesh", "222129", "8788566219", "shubham@gmail.com", "address001", "Family");
+            table.Rows.Add("Shubham", "Seth", "Kopa, Patrahi", "Jaunpur", "Uttar Pradesh", "222129", "8788566219", "shubham@gmail.com", "address001", "Friend");
             table.Rows.Add("Ekta", "Verma", "Durga kund", "Varanasi", "Uttar Pradesh", "225121", "8570934858", "ekta@gmail.com", "address002", "Friend");
             table.Rows.Add("Vishal", "Singh", "Machhali Shahar", "Jaunpur", "Uttar Pradesh", "242206", "7894561230", "vishal@gmail.com", "address002", "Friend");
             table.Rows.Add("Varun", "Seth", "Lanka", "Varanasi", "Uttar Pradesh", "232206", "7894561230", "varun@gmail.com", "address001", "Family");
@@ -154,6 +154,29 @@ namespace AddressBookSystemLINQ
             foreach (var contactlist in countData)
             {
                 Console.WriteLine("AddressBook Type =" + contactlist.BookType + " --> " + "AddressBook_Count = " + contactlist.BookTypeCount);
+            }
+        }
+
+        // Ability to retrieve entries sorted alphabetically by Person’s name for a given BookType
+        public void RetrieveByUsingBookType(string bookType)
+        {
+            var retrievedData = from records in table.AsEnumerable()
+                                where records.Field<string>("BookType") == bookType
+                                orderby records.Field<string>("FirstName"), records.Field<string>("LastName")
+                                select records;
+            foreach (var dr in retrievedData)
+            {
+                Console.WriteLine("\n");
+                Console.WriteLine("FirstName:- " + dr.Field<string>("firstName"));
+                Console.WriteLine("LastName:- " + dr.Field<string>("lastName"));
+                Console.WriteLine("Address:- " + dr.Field<string>("address"));
+                Console.WriteLine("City:- " + dr.Field<string>("city"));
+                Console.WriteLine("State:- " + dr.Field<string>("state"));
+                Console.WriteLine("Zip:- " + dr.Field<string>("zip"));
+                Console.WriteLine("PhoneNumber:- " + dr.Field<string>("phoneNumber"));
+                Console.WriteLine("Email:- " + dr.Field<string>("eMail"));
+                Console.WriteLine("BookName:- " + dr.Field<string>("bookName"));  
+                Console.WriteLine("BookType:- " + dr.Field<string>("bookType"));
             }
         }
     }
