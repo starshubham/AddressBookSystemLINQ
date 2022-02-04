@@ -22,11 +22,14 @@ namespace AddressBookSystemLINQ
             table.Columns.Add("Zip", typeof(string));
             table.Columns.Add("PhoneNumber", typeof(string));
             table.Columns.Add("Email", typeof(string));
+            table.Columns.Add("BookName", typeof(string));     // UC9:- Ability to identify each Address Book with name and Type.
+            table.Columns.Add("BookType", typeof(string));
 
             // UC3:- Ability to insert new Contacts to Address Book
-            table.Rows.Add("Shubham", "Seth", "Kopa, Patrahi", "Jaunpur", "Uttar Pradesh", "222129", "8788566219", "shubham@gmail.com");
-            table.Rows.Add("Ekta", "Verma", "Durga kund", "Varanasi", "Uttar Pradesh", "225121", "8570934858", "ekta@gmail.com");
-            table.Rows.Add("Vishal", "Singh", "Machhali Shahar", "Jaunpur", "Uttar Pradesh", "242206", "7894561230", "vishal@gmail.com");
+            table.Rows.Add("Shubham", "Seth", "Kopa, Patrahi", "Jaunpur", "Uttar Pradesh", "222129", "8788566219", "shubham@gmail.com", "address001", "Family");
+            table.Rows.Add("Ekta", "Verma", "Durga kund", "Varanasi", "Uttar Pradesh", "225121", "8570934858", "ekta@gmail.com", "address002", "Friend");
+            table.Rows.Add("Vishal", "Singh", "Machhali Shahar", "Jaunpur", "Uttar Pradesh", "242206", "7894561230", "vishal@gmail.com", "address002", "Friend");
+            table.Rows.Add("Varun", "Seth", "Lanka", "Varanasi", "Uttar Pradesh", "232206", "7894561230", "varun@gmail.com", "address001", "Family");
         }
 
         public void GetAllContacts()
@@ -44,6 +47,8 @@ namespace AddressBookSystemLINQ
                     Console.WriteLine("Zip:- " + dr.Field<string>("zip"));
                     Console.WriteLine("PhoneNumber:- " + dr.Field<string>("phoneNumber"));
                     Console.WriteLine("Email:- " + dr.Field<string>("eMail"));
+                    Console.WriteLine("BookName:- " + dr.Field<string>("bookName"));     // Newly added 
+                    Console.WriteLine("BookType:- " + dr.Field<string>("bookType"));
                 }
             }
             catch (Exception ex)
@@ -136,6 +141,7 @@ namespace AddressBookSystemLINQ
                 Console.WriteLine("Email:- " + dr.Field<string>("eMail"));
             }
         }
+
 
     }
 }
