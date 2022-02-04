@@ -15,7 +15,10 @@ namespace AddressBookSystemLINQ
             //addressBookTable.GetAllContacts();
 
             // UC4
-            addressBookTable.EditExistingContact("Shubham", "Seth", "PhoneNumber", "8173070519");
+            //addressBookTable.EditExistingContact("Shubham", "Seth", "PhoneNumber", "8173070519");
+
+            // UC5
+            addressBookTable.DeleteContact("Vishal", "Singh"); 
         }
     }
 }
